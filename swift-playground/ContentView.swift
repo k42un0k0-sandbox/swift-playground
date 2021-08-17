@@ -8,9 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var modelData = ModelData()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView {
+            LandmarkList()
+                .environmentObject(modelData)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "a")
+                        Text("TabA")
+                    }
+            }.tag(1)
+            TabBView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "bold")
+                        Text("TabB")
+                    }
+            }.tag(2)
+        }
     }
 }
 
